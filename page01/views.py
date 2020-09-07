@@ -120,3 +120,10 @@ def delete_page(request, pk):
         page.delete()
         return redirect('/pages')
     return render(request, 'page01/delete_page.html', {'page': page})
+
+def delete_comment(request, pk):
+    comment = Comment.object.get(pk=pk)
+    if request.method == 'POST':
+        comment.delete()
+        return redirect('/')
+    return render(request, 'page01/delete_comment.html', {'comment': comment})

@@ -34,4 +34,5 @@ urlpatterns = [
     path('pages/new/', new_page),
     path('pages/<pk>/edit/', edit_page),
     path('pages/<pk>/delete/', delete_page),
+    path('comments/<pk>/delete/', delete_comment)
 ]
