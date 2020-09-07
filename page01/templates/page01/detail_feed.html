@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>newsfeed</title>
+    <link rel="stylesheet" type="text/css" href='/static/newsfeed.css'>
+</head>
+
+<body>
+    <div class="header">
+        <div class="btn1">
+            <a href="/new"><img src="/static/facebook_icon.jpg" width="30px" style="margin:9px 0 0 13px"></a>
+        </div>
+        <div class="search">
+            <input type="text" class="searchbar" placeholder="Search">
+        </div>
+        <div class="btn2"><img src="/static/search_icon.png" width="22px" style="margin:9px 13px 0 0"></div>
+    </div>
+    <div class="container">
+        <div class="feed">
+            <h3 class="name">{{ article.title }}</h3>
+            <div class="date">{{ article.created_at }}</div>
+            <div>
+                <a href="/feed/{{ article.pk }}/edit"><img src="/static/edit_icon.png" height="16px"></a>
+                <a href="/feed/{{ article.pk }}/delete"><img src="/static/delete_icon.png" height="16px"></a>
+            </div>
+            <span class="title"><a href="/feed/{{ article.pk }}" class="title">{{ article.title }}</a></span>
+            <div class="author"> {{ article.author }}</div>
+            <p class="content">{{ article.text }}</p>
+            <div class="accessory">
+                <img src="/static/good_icon.jpg" width="25px"> Like <img src="/static/write_icon.jpg" width="35px"> Comments
+            </div>
+            <div class="comment_list">
+                {% for comment in article.comments.all %}
+                <div class="comment"><span class="name">{{ comment.author }}</span> {{ comment.text }}</div>
+                <div class="comment__date">{{ comment.created_at }}
+                    <a href="코멘트삭제주소"><img src="/static/delete_icon.png" height="16px"></a>
+                </div>
+                {% endfor %}
+                <div class="form-wrapper">
+                    <span class="help">Comments</span>
+                    <form action="" method="POST">
+                        {% csrf_token %}
+                        <input type="text" name="nickname" placeholder="이름" /><br/>
+                        <input type="password" name="password" placeholder="비밀번호" /><br/>
+                        <textarea name="reply" placeholder="코멘트 내용"></textarea>
+                        <button type="submit">등록</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="tab1"><img src="/static/feed_icon.png" width="22px" style="margin-top: 15px">
+        </div>
+        <div class="tab2"><img src="/static/person_icon.png" width="20px" style="margin-top: 14px"></div>
+        <div class="tab3"><img src="/static/globe_icon.png" width="20px" style="margin-top: 14px">
+        </div>
+        <div class="tab4"><img src="/static/etc_icon.png" width="20px" style="margin-top: 14px"></div>
+    </div>
+</body>
+
+</html>

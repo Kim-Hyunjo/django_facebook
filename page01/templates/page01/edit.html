@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>newsfeed</title>
+    <link rel="stylesheet" type="text/css" href='/static/new_feed.css'>
+</head>
+
+<body>
+    <div class="header">
+        <div class="btn1">
+            <a href="/new"><img src="/static/facebook_icon.jpg" width="30px" style="margin:9px 0 0 13px"></a>
+        </div>
+        <div class="search">
+            <input type="text" class="searchbar" placeholder="Search">
+        </div>
+        <div class="btn2"><img src="/static/search_icon.png" width="22px" style="margin:9px 13px 0 0"></div>
+    </div>
+    <div class="container">
+        <div class="form_box">
+            <form method="POST">
+                {% csrf_token %}
+                <h3>글 수정하기</h3>
+                <input class="input_field" type="password" placeholder="비밀번호를 입력해주세요." name="entering_pw"><br>
+                <input class="input_field" type="text" placeholder="글쓴이의 이름은?" name="author" value="{{ article.author }}"><br>
+                <input class="input_field" type="text" placeholder="제목을 입력해주세요." name="title" value="{{ article.title }}"><br>
+                <textarea class="textarea_field" placeholder="내용을 입력해주세요." name="content">{{ article.text }}</textarea><br>
+                <button class="write_button">수정</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="tab1"><img src="/static/feed_icon.png" width="22px" style="margin-top: 15px">
+        </div>
+        <div class="tab2"><img src="/static/person_icon.png" width="20px" style="margin-top: 14px"></div>
+        <div class="tab3"><img src="/static/globe_icon.png" width="20px" style="margin-top: 14px">
+        </div>
+        <div class="tab4"><img src="/static/etc_icon.png" width="20px" style="margin-top: 14px"></div>
+    </div>
+</body>
+
+</html>

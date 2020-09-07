@@ -1,0 +1,17 @@
+.msg {
+    text-align: center;
+    color: white;
+    font-size: xx-large;
+}
+
+#fail {
+    background-color: red;
+}
+
+#help {
+    background-color: blue;
+}
+
+#warn {
+    background-color: orange;
+}

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>new page</title>
+    <link rel="stylesheet" type="text/css" href='/static/new_page.css'>
+</head>
+
+<body>
+    <div class="header">
+        <div class="btn1">
+            <a href="/new"><img src="/static/write_icon.jpg" width="30px" style="margin:9px 0 0 13px"></a>
+        </div>
+        <div class="search">
+            <input type="text" class="searchbar" placeholder="Search">
+        </div>
+        <div class="btn2"><img src="/static/search_icon.png" width="22px" style="margin:9px 13px 0 0">
+        </div>
+    </div>
+    <div class="container">
+        <div class="form_box">
+            <form method="POST">
+                {% csrf_token %}
+                <h3>게시물 올리기</h3>
+                <input class="input_field" type="text" placeholder="페이지 관리자" name="master"><br>
+                <input class="input_field" type="text" placeholder="페이지 이름" name="title"><br>
+                <select class="select_field" placeholder="페이지 분야" name="category">
+                    <option value="">카테고리 선택</option>
+                    {% for category in category_list %}
+                    <option value={{ category }}>{{ category }}</option>
+                    {% endfor %}
+                <textarea class="textarea_field" placeholder="내용을 입력해주세요." name="content"></textarea><br>
+                <button class="write_button">게시</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer">
+        <div class="tab1"><img src="/static/feed_icon.png" width="22px" style="margin-top: 15px">
+        </div>
+        <div class="tab2"><img src="/static/person_icon.png" width="20px" style="margin-top: 14px"></div>
+        <div class="tab3"><img src="/static/globe_icon.png" width="20px" style="margin-top: 14px">
+        </div>
+        <div class="tab4"><img src="/static/etc_icon.png" width="20px" style="margin-top: 14px"></div>
+    </div>
+</body>
+
+</html>
