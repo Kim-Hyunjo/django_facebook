@@ -34,5 +34,5 @@ urlpatterns = [
     path('pages/new/', new_page),
     path('pages/<pk>/edit/', edit_page),
     path('pages/<pk>/delete/', delete_page),
-    path('feed/<pk>/comments/<int:comment_id>/delete/', views.delete_comment, name='delete_comment'),
+    path('comments/<pk>/delete/', delete_comment),
 ]
